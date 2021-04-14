@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+client = Client.create!(name: 'Link Sb')
+
+collection = Collection.create!(name: '2020/2', end_date: nil, client: client)
+
+product = Product.create!(name: 'Camiseta IceXSb', collection: collection, price: 20.50)
+
+sizes = ["P", "M", "G", "XG"]
+sizes.each do |size|
+  Size.create!(type: size, product: product)
+end

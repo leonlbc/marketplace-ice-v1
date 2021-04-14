@@ -9,8 +9,8 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
 
-  # GET /clients/1 or /clients/1.json
   def show
+    @client = Client.friendly.find(params[:id])
   end
 
   # GET /clients/new
