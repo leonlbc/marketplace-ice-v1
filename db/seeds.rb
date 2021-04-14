@@ -7,12 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 client = Client.create!(name: 'Link Sb')
+puts("Client #{client.name}")
 
-collection = Collection.create!(name: '2020/2', end_date: nil, client: client)
+collection = Collection.create!(name: '2020/2', end_date: DateTime.now.next_day(60), client: client)
+puts("Collection #{collection.name}")
 
-product = Product.create!(name: 'Camiseta IceXSb', collection: collection, price: 20.50)
+[['Camiseta IceXSb', 20.50], ['Corta-Vento Link',120.50]].each do |p|
+  p_name = p[0]
+  price = p[1]
 
-sizes = ["P", "M", "G", "XG"]
-sizes.each do |size|
-  Size.create!(type: size, product: product)
+  product = Product.create!(name: p_name, collection: collection, price: price)
+  puts("Product |#{p_name}: #{price}| Created")
+
+  ["P", "M", "G", "XG"].each do |size|
+    Size.create!(letter: size, product: product)
+    puts("Size |#{size}| Created for Product #{p_name}")
+  end
 end
+

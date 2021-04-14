@@ -1,8 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: %i[ show edit update destroy ]
 
-  def home
-  end
 
   # GET /clients or /clients.json
   def index
@@ -10,7 +8,9 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = Client.friendly.find(params[:id])
+    today = DateTime.now
+    @collection = Collection.find_by(client: @client)
+    @products = Product.where(collection: @collection)
   end
 
   # GET /clients/new
@@ -62,7 +62,8 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      @client = Client.find(params[:id])
+      #@client = Client.find(params[:id])
+      @client = Client.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

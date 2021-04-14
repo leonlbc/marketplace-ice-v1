@@ -6,10 +6,6 @@ class CollectionsController < ApplicationController
     @collections = Collection.all
   end
 
-  # GET /collections/1 or /collections/1.json
-  def show
-  end
-
   # GET /collections/new
   def new
     @collection = Collection.new

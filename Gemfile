@@ -32,6 +32,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.4.0'
+gem 'money-rails'
 
 group :development, :test do
   gem 'pry-byebug'

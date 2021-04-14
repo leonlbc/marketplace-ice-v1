@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :collections
-  resources :clients
+
+  get ':id', to: 'clients#show'
   root to: 'pages#home'
 end
