@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-
-  get ':id', to: 'clients#show'
   root to: 'pages#home'
+
+  get ':id', to: 'clients#show' do
+    get ':id', to: 'products#show'
+  end
+
 end
